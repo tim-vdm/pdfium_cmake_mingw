@@ -1,0 +1,39 @@
+add_library(pdfium_core_fpdfapi_font STATIC
+    cfx_cttgsubtable.cpp
+    cfx_cttgsubtable.h
+    cfx_stockfontarray.cpp
+    cfx_stockfontarray.h
+    cpdf_cid2unicodemap.cpp
+    cpdf_cid2unicodemap.h
+    cpdf_cidfont.cpp
+    cpdf_cidfont.h
+    cpdf_cmap.cpp
+    cpdf_cmap.h
+    cpdf_cmapparser.cpp
+    cpdf_cmapparser.h
+    cpdf_font.cpp
+    cpdf_font.h
+    cpdf_fontencoding.cpp
+    cpdf_fontencoding.h
+    cpdf_fontglobals.cpp
+    cpdf_fontglobals.h
+    cpdf_simplefont.cpp
+    cpdf_simplefont.h
+    cpdf_tounicodemap.cpp
+    cpdf_tounicodemap.h
+    cpdf_truetypefont.cpp
+    cpdf_truetypefont.h
+    cpdf_type1font.cpp
+    cpdf_type1font.h
+    cpdf_type3char.cpp
+    cpdf_type3char.h
+    cpdf_type3font.cpp
+    cpdf_type3font.h
+)
+
+target_link_libraries(pdfium_core_fpdfapi_font PUBLIC
+    pdfium_core_fxcrt
+    pdfium_core_fxge
+    pdfium_core_fpdfapi_cmaps
+    pdfium_core_fpdfapi_parser
+)

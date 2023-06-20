@@ -7,7 +7,7 @@
 #include <stddef.h>
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 #elif defined(__APPLE__)
 #include <mach-o/dyld.h>
 #include <sys/stat.h>

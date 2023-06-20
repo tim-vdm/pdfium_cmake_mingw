@@ -1,0 +1,13 @@
+diff --git a/absl/time/CMakeLists.txt b/absl/time/CMakeLists.txt
+index b312425..77622f7 100644
+--- a/absl/time/CMakeLists.txt
++++ b/absl/time/CMakeLists.txt
+@@ -76,7 +76,7 @@ absl_cc_library(
+     "internal/cctz/src/time_zone_info.h"
+     "internal/cctz/src/time_zone_libc.cc"
+     "internal/cctz/src/time_zone_libc.h"
+-    "internal/cctz/src/time_zone_lookup.cc"
++    #"internal/cctz/src/time_zone_lookup.cc"
+     "internal/cctz/src/time_zone_posix.cc"
+     "internal/cctz/src/time_zone_posix.h"
+     "internal/cctz/src/tzfile.h"

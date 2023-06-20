@@ -1,0 +1,63 @@
+add_subdirectory(formfiller)
+add_subdirectory(pwl)
+
+add_library(pdfium_fpdfsdk STATIC
+    cpdfsdk_annot.cpp
+    cpdfsdk_annot.h
+    cpdfsdk_annotiteration.cpp
+    cpdfsdk_annotiteration.h
+    cpdfsdk_annotiterator.cpp
+    cpdfsdk_annotiterator.h
+    cpdfsdk_appstream.cpp
+    cpdfsdk_appstream.h
+    cpdfsdk_baannot.cpp
+    cpdfsdk_baannot.h
+    cpdfsdk_customaccess.cpp
+    cpdfsdk_customaccess.h
+    cpdfsdk_filewriteadapter.cpp
+    cpdfsdk_filewriteadapter.h
+    cpdfsdk_formfillenvironment.cpp
+    cpdfsdk_formfillenvironment.h
+    cpdfsdk_helpers.cpp
+    cpdfsdk_helpers.h
+    cpdfsdk_interactiveform.cpp
+    cpdfsdk_interactiveform.h
+    cpdfsdk_pageview.cpp
+    cpdfsdk_pageview.h
+    cpdfsdk_pauseadapter.cpp
+    cpdfsdk_pauseadapter.h
+    cpdfsdk_renderpage.cpp
+    cpdfsdk_renderpage.h
+    cpdfsdk_widget.cpp
+    cpdfsdk_widget.h
+    fpdf_annot.cpp
+    fpdf_attachment.cpp
+    fpdf_catalog.cpp
+    fpdf_dataavail.cpp
+    fpdf_doc.cpp
+    fpdf_editimg.cpp
+    fpdf_editpage.cpp
+    fpdf_editpath.cpp
+    fpdf_edittext.cpp
+    fpdf_ext.cpp
+    fpdf_flatten.cpp
+    fpdf_formfill.cpp
+    fpdf_javascript.cpp
+    fpdf_ppo.cpp
+    fpdf_progressive.cpp
+    fpdf_save.cpp
+    fpdf_searchex.cpp
+    fpdf_signature.cpp
+    fpdf_structtree.cpp
+    fpdf_sysfontinfo.cpp
+    fpdf_text.cpp
+    fpdf_thumbnail.cpp
+    fpdf_transformpage.cpp
+    fpdf_view.cpp
+)
+
+target_link_libraries(pdfium_fpdfsdk PUBLIC
+    pdfium_core
+    pdfium_fpdfsdk_formfiller
+    pdfium_fxjs
+)

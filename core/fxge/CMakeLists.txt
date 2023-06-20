@@ -1,0 +1,144 @@
+add_library(pdfium_core_fxge STATIC
+    agg/fx_agg_driver.cpp
+    agg/fx_agg_driver.h
+    calculate_pitch.cpp
+    calculate_pitch.h
+    cfx_cliprgn.cpp
+    cfx_cliprgn.h
+    cfx_color.cpp
+    cfx_color.h
+    cfx_defaultrenderdevice.cpp
+    cfx_defaultrenderdevice.h
+    cfx_drawutils.cpp
+    cfx_drawutils.h
+    cfx_face.cpp
+    cfx_face.h
+    cfx_fillrenderoptions.h
+    cfx_folderfontinfo.cpp
+    cfx_folderfontinfo.h
+    cfx_font.cpp
+    cfx_font.h
+    cfx_fontcache.cpp
+    cfx_fontcache.h
+    cfx_fontmapper.cpp
+    cfx_fontmapper.h
+    cfx_fontmgr.cpp
+    cfx_fontmgr.h
+    cfx_gemodule.cpp
+    cfx_gemodule.h
+    cfx_glyphbitmap.cpp
+    cfx_glyphbitmap.h
+    cfx_glyphcache.cpp
+    cfx_glyphcache.h
+    cfx_graphstate.cpp
+    cfx_graphstate.h
+    cfx_graphstatedata.cpp
+    cfx_graphstatedata.h
+    cfx_path.cpp
+    cfx_path.h
+    cfx_renderdevice.cpp
+    cfx_renderdevice.h
+    cfx_substfont.cpp
+    cfx_substfont.h
+    cfx_textrenderoptions.h
+    cfx_unicodeencoding.cpp
+    cfx_unicodeencoding.h
+    dib/cfx_bitmapcomposer.cpp
+    dib/cfx_bitmapcomposer.h
+    dib/cfx_bitmapstorer.cpp
+    dib/cfx_bitmapstorer.h
+    dib/cfx_cmyk_to_srgb.cpp
+    dib/cfx_cmyk_to_srgb.h
+    dib/cfx_dibbase.cpp
+    dib/cfx_dibbase.h
+    dib/cfx_dibitmap.cpp
+    dib/cfx_dibitmap.h
+    dib/cfx_imagerenderer.cpp
+    dib/cfx_imagerenderer.h
+    dib/cfx_imagestretcher.cpp
+    dib/cfx_imagestretcher.h
+    dib/cfx_imagetransformer.cpp
+    dib/cfx_imagetransformer.h
+    dib/cfx_scanlinecompositor.cpp
+    dib/cfx_scanlinecompositor.h
+    dib/cstretchengine.cpp
+    dib/cstretchengine.h
+    dib/fx_dib.cpp
+    dib/fx_dib.h
+    dib/scanlinecomposer_iface.h
+    fontdata/chromefontdata/FoxitDingbats.cpp
+    fontdata/chromefontdata/FoxitFixed.cpp
+    fontdata/chromefontdata/FoxitFixedBold.cpp
+    fontdata/chromefontdata/FoxitFixedBoldItalic.cpp
+    fontdata/chromefontdata/FoxitFixedItalic.cpp
+    fontdata/chromefontdata/FoxitSans.cpp
+    fontdata/chromefontdata/FoxitSansBold.cpp
+    fontdata/chromefontdata/FoxitSansBoldItalic.cpp
+    fontdata/chromefontdata/FoxitSansItalic.cpp
+    fontdata/chromefontdata/FoxitSansMM.cpp
+    fontdata/chromefontdata/FoxitSerif.cpp
+    fontdata/chromefontdata/FoxitSerifBold.cpp
+    fontdata/chromefontdata/FoxitSerifBoldItalic.cpp
+    fontdata/chromefontdata/FoxitSerifItalic.cpp
+    fontdata/chromefontdata/FoxitSerifMM.cpp
+    fontdata/chromefontdata/FoxitSymbol.cpp
+    fontdata/chromefontdata/chromefontdata.h
+    freetype/fx_freetype.cpp
+    freetype/fx_freetype.h
+    fx_font.cpp
+    fx_font.h
+    render_defines.h
+    renderdevicedriver_iface.cpp
+    renderdevicedriver_iface.h
+    scoped_font_transform.cpp
+    scoped_font_transform.h
+    systemfontinfo_iface.h
+    text_char_pos.cpp
+    text_char_pos.h
+    text_glyph_pos.cpp
+    text_glyph_pos.h
+)
+
+if(UNIX)
+    target_sources(pdfium_core_fxge PUBLIC
+        linux/fx_linux_impl.cpp
+    )
+elseif(WIN32)
+    target_sources(pdfium_core_fxge PUBLIC
+        cfx_windowsrenderdevice.cpp
+        cfx_windowsrenderdevice.h
+        win32/cfx_psfonttracker.cpp
+        win32/cfx_psfonttracker.h
+        win32/cfx_psrenderer.cpp
+        win32/cfx_psrenderer.h
+        win32/cgdi_device_driver.cpp
+        win32/cgdi_device_driver.h
+        win32/cgdi_display_driver.cpp
+        win32/cgdi_display_driver.h
+        win32/cgdi_plus_ext.cpp
+        win32/cgdi_plus_ext.h
+        win32/cgdi_printer_driver.cpp
+        win32/cgdi_printer_driver.h
+        win32/cps_printer_driver.cpp
+        win32/cps_printer_driver.h
+        win32/cpsoutput.cpp
+        win32/cpsoutput.h
+        win32/ctext_only_printer_driver.cpp
+        win32/ctext_only_printer_driver.h
+        win32/cwin32_platform.cpp
+        win32/cwin32_platform.h
+
+        # The Qt bundled freetype does not have this function
+        ../../third_party/freetype/src/src/base/ftfstype.c
+    )
+endif()
+
+# ft_adobe_glyph_list is not exported from the Freetype shared library so we
+# need it defined in component builds and builds using system freetype.
+target_compile_definitions(pdfium_core_fxge PUBLIC DEFINE_PS_TABLES_DATA)
+
+target_link_libraries(pdfium_core_fxge PUBLIC
+    Freetype::Freetype
+    pdfium_core_fxcrt
+    pdfium_agg23
+)

@@ -15,7 +15,7 @@
 #include "third_party/base/bits.h"
 #include "third_party/base/check.h"
 
-#if defined(COMPILER_MSVC)
+#if defined(COMPILER_MSVC) || defined(__MINGW32__)
 #include <malloc.h>
 #else
 #include <stdlib.h>

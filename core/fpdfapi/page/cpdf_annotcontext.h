@@ -12,9 +12,11 @@
 #include "core/fxcrt/retain_ptr.h"
 #include "core/fxcrt/unowned_ptr.h"
 
+#include "core/fpdfapi/parser/cpdf_stream.h"
+
 class CPDF_Dictionary;
 class CPDF_Form;
-class CPDF_Stream;
+//class CPDF_Stream;
 class IPDF_Page;
 
 class CPDF_AnnotContext {
